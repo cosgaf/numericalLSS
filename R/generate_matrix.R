@@ -1,3 +1,8 @@
+#' @title Gera matriz de Hilbert
+#' @description
+#' Gera uma matriz de Hilbert, onde cada termo a_ij = 1 / (i + j - 1)
+#' @param dimensao dimensão da matriz a ser gerada (nxn)
+#' @return Retorna a matriz de Hilbert, de tamanhao nxn, como definida em...
 #' @export
 GeraMatrizHilbert <- function(dimensao){
   # Inicializa matriz de zeros

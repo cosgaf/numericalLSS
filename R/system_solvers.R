@@ -1,11 +1,3 @@
-
-############################# ATENÇÃO #######################################
-
-# Explicar os motivos que podem levar a ser um "Não foi possível calcular"
-# ou um "Problema sem solução"
-
-#############################################################################
-
 CalculaResultadoMatrizSuperior <- function(matriz, b, dimensao){
 
   # Cria vetor que vai receber a resposta do sistema
@@ -95,9 +87,9 @@ EliminacaoSemPivotamento <- function(matriz, vetor, dimensao){
       matriz[linha,] <- tmp
 
       # Troca linhas do vetor
-      tmp <- b[p,]
-      b[p,] <- b[linha,]
-      b[linha,] <- tmp
+      tmp <- vetor[p,]
+      vetor[p,] <- vetor[linha,]
+      vetor[linha,] <- tmp
 
       # Incrementa contador de troca de linhas
       trocasDeLinha <- trocasDeLinha + 1
@@ -114,7 +106,7 @@ EliminacaoSemPivotamento <- function(matriz, vetor, dimensao){
       # Zera aprimeira posição da linha, aplicando o multplicador
       matriz[linha_final,] <- matriz[linha_final,] - m*matriz[linha,]
       # Aplica o multplicador no vetor b
-      b[linha_final,] <- b[linha_final,] - m*b[linha,]
+      vetor[linha_final,] <- vetor[linha_final,] - m*vetor[linha,]
       # Pula para a próxima linha
       linha_final <- linha_final + 1
     }
@@ -128,7 +120,7 @@ EliminacaoSemPivotamento <- function(matriz, vetor, dimensao){
 
   # Montar vetor de retorno, com a solução do sistema e determinante da matriz A
   return(list("matriz" = matriz,
-              "x" = CalculaResultadoMatrizSuperior(matriz, b, dimensao),
+              "x" = CalculaResultadoMatrizSuperior(matriz, vetor, dimensao),
               "determinante" = CalculaDeterminante(matriz, dimensao, trocasDeLinha),
               "msg_erro" = "Calculado com sucesso"))
 }
@@ -179,9 +171,9 @@ EliminacaoComPivotamento <- function(matriz, vetor, dimensao){
       matriz[linha,] <- tmp
 
       # Troca linhas do vetor
-      tmp <- b[linha_maior,]
-      b[linha_maior,] <- b[linha,]
-      b[linha,] <- tmp
+      tmp <- vetor[linha_maior,]
+      vetor[linha_maior,] <- vetor[linha,]
+      vetor[linha,] <- tmp
 
       # Incrementa contador de troca de linhas
       trocasDeLinha <- trocasDeLinha + 1
@@ -197,7 +189,7 @@ EliminacaoComPivotamento <- function(matriz, vetor, dimensao){
       # Zera a primeira posição da linha, aplicando o multplicador
       matriz[linha_final,] <- matriz[linha_final,] - m*matriz[linha,]
       # Aplica o multplicador no vetor b
-      b[linha_final,] <- b[linha_final,] - m*b[linha,]
+      vetor[linha_final,] <- vetor[linha_final,] - m*vetor[linha,]
       # Pula para a próxima linha
       linha_final <- linha_final + 1
     }
@@ -208,12 +200,18 @@ EliminacaoComPivotamento <- function(matriz, vetor, dimensao){
   }
   # Montar vetor de retorno, com a solução do sistema e determinante da matriz A
   retorno <- list("matriz" = matriz,
-                  "x" = CalculaResultadoMatrizSuperior(matriz, b, dimensao),
+                  "x" = CalculaResultadoMatrizSuperior(matriz, vetor, dimensao),
                   "determinante" = CalculaDeterminante(matriz, dimensao, trocasDeLinha),
                   "msg_erro" = "Calculado com sucesso")
 }
 
-#'@export
+#' @title Solver sem pivotamento
+#' @description
+#' Recebe uma matriz e um vetor 'b' e realiza a eliminação de Gauss sem pivotamento.
+#' @param matriz Matriz quadrada, de ordem n
+#' @param vetor Vetor de dimensao nx1
+#' @return Retorna o vetor solução 'x' e o determinante da matriz
+#' @export
 solver_semPivotamento <- function(matriz, vetor){
   tryCatch(
     {
@@ -228,7 +226,13 @@ solver_semPivotamento <- function(matriz, vetor){
   )
 }
 
-#'@export
+#' @title Solver com pivotamento
+#' @description
+#' Recebe uma matriz e um vetor 'b' e realiza a eliminação de Gauss com pivotamento.
+#' @param matriz Matriz quadrada, de ordem n
+#' @param vetor Vetor de dimensao nx1
+#' @return Retorna o vetor solução 'x' e o determinante da matriz
+#' @export
 solver_comPivotamento <- function(matriz, vetor){
   tryCatch(
     {
@@ -242,4 +246,3 @@ solver_comPivotamento <- function(matriz, vetor){
     }
   )
 }
-

@@ -1,14 +1,20 @@
 Package: numericalLSS
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Métodos numéricos para solução de sistemas lineares
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: c(
+            person(given="Gabriela",
+            family="Ferreira Costa",
+            role=c("aut","cre"),
+            email="gabi.ferreiracosta15@gmail.com"
+            ))
+Author: Gabriela Ferreira Costa [aut,cre]
+Maintainer: Gabriela Ferreira Costa <gabi.ferreiracosta15@gmail.com>
+Description: Implementadas duas funções para solução de sistemas lineares, de forma numérica, de acordo como exposto no livro...
+License: GPL (>= 2.0)
+Depends: R (>= 4.3.1)
 Encoding: UTF-8
-LazyData: true
+LazyData: false
 RoxygenNote: 7.3.1
 URL: https://github.com/cosgaf/numericalLSS
 BugReports: https://github.com/cosgaf/numericalLSS/issues

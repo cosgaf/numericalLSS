@@ -208,9 +208,12 @@ EliminacaoComPivotamento <- function(matriz, vetor, dimensao){
 #' @title Solver sem pivotamento
 #' @description
 #' Recebe uma matriz e um vetor 'b' e realiza a eliminação de Gauss sem pivotamento.
+#' @details
+#' Additional details...
 #' @param matriz Matriz quadrada, de ordem n
 #' @param vetor Vetor de dimensao nx1
 #' @return Retorna o vetor solução 'x' e o determinante da matriz
+#' @references reference
 #' @export
 solver_semPivotamento <- function(matriz, vetor){
   tryCatch(
@@ -229,9 +232,12 @@ solver_semPivotamento <- function(matriz, vetor){
 #' @title Solver com pivotamento
 #' @description
 #' Recebe uma matriz e um vetor 'b' e realiza a eliminação de Gauss com pivotamento.
+#' @details
+#' Additional details...
 #' @param matriz Matriz quadrada, de ordem n
 #' @param vetor Vetor de dimensao nx1
 #' @return Retorna o vetor solução 'x' e o determinante da matriz
+#' @references reference
 #' @export
 solver_comPivotamento <- function(matriz, vetor){
   tryCatch(

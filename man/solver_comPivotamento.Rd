@@ -7,13 +7,28 @@
 solver_comPivotamento(matriz, vetor)
 }
 \arguments{
-\item{matriz}{Matriz quadrada, de ordem n}
+\item{matriz}{Matriz quadrada, de ordem \eqn{n}.}
 
-\item{vetor}{Vetor de dimensao nx1}
+\item{vetor}{Vetor de dimensao \eqn{n} x \eqn{1}.}
 }
 \value{
-Retorna o vetor solução 'x' e o determinante da matriz
+Retorna uma lista com quatro (4) elementos:
+\item{matriz}{a matriz inicial no formato escalonado (no formato triangular superior).}
+\item{x}{o vetor solução.}
+\item{determinante}{o determinante da matriz inicial.}
+\item{msg_erro}{mensagem de erro, ou warning, quando não foi possível calcular a solução.}
+Em caso de não ser possível calcular a solução, todos os retornos estarão com valores NULL, com exceção do msg_erro, que conterá a mensagem explicando o motivo de não ser possível calcular.
 }
 \description{
 Recebe uma matriz e um vetor 'b' e realiza a eliminação de Gauss com pivotamento.
+}
+\details{
+A teoria utilizada, para a função 'Solver com pivotamento', encontra-se no capítulo 6 do livro "Análise Numérica" (2022), dos autores Richard L. Burden, Douglas J. Faires e Annette M. Burden.
+O método, descrito no tópico \strong{"6.2 Estratégias de pivotamento"} (BURDEN; FAIRES; BURDEN, 2022, p. 412), consiste em zerar os coeficientes das linhas abaixo da linha selecionada, de forma a transformar a matriz inicial em uma matriz triangular superior, por meio de operações básicas entre linhas.
+Uma vez escalonada a matriz, o método inicia na última linha e prossegue calculando o resultado de baixo para cima.
+Diferentemente do método sem pivotamento, este método busca manter na diagonal principal os maiores coeficientes de cada coluna, a medida que o processo de escalonamento vai sendo realizado.
+Dessa forma, busca-se evitar problemas numéricos de aredondamento no momento de operar entre as linhas da matriz.
+}
+\references{
+Livro: BURDEN, Richard L.; FAIRES, Douglas J.; BURDEN, Annette M.; \strong{Análise Numérica}. 3. ed. Tradução: All Tasks. Revisão técnica: Helena Maria Ávila de Castro. São Paulo: Cengage Learning, 2022. cap. 6.
 }

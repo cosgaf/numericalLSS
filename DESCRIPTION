@@ -10,7 +10,7 @@ Authors@R: c(
             ))
 Author: Gabriela Ferreira Costa [aut,cre]
 Maintainer: Gabriela Ferreira Costa <gabi.ferreiracosta15@gmail.com>
-Description: Implementadas duas funções para solução de sistemas lineares, de forma numérica, de acordo como exposto no livro...
+Description: Para o pacote, foram implementadas duas funções para solução de sistemas lineares, de forma numérica, de acordo com o exposto no capítulo 6 do livro "Análise numérica" (2022), dos autores Richard L. Burden, Douglas J. Faires e Annette M. Burden.
 License: GPL (>= 2.0)
 Depends: R (>= 4.3.1)
 Encoding: UTF-8

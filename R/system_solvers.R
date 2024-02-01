@@ -56,6 +56,28 @@ CalculaDeterminante <- function(matriz, dimensao, trocaDeLinhas){
 
 EliminacaoSemPivotamento <- function(matriz, vetor, dimensao){
 
+  # Fazendo validações da matriz
+  # Verificando se o objeto ´e uma matriz
+  if (!is.matrix(matriz)) {
+    stop("O argumento passado como 'matriz' não é um matriz. Por favor, entre com uma matriz",
+         call. = FALSE)
+  }
+  # Verificando se a matriz ´e quadrada
+  if (ncol(matriz) != nrow(matriz)) {
+    stop("A matriz passada deve ser quadrada (numero de linhas igual ao numero de colunas)", call. = FALSE)
+  }
+
+  # Fazendo validações do vetor
+  # Verificando se o objeto ´e uma matriz
+  if (!is.matrix(vetor)) {
+    stop("O argumento 'vetor' deve ser uma matriz, com dimensões nx1",
+         call. = FALSE)
+  }
+  # Verificando se a matriz ´e quadrada
+  if (ncol(vetor) != 1 || nrow(vetor) != ncol(matriz)) {
+    stop("O número de linhas do vetor não é igual ao número de colunas da matriz, ou o vetor não esta com dimensões nx1", call. = FALSE)
+  }
+
   # Define variáveis auxiliares
   # Define variável que vai contar o numero de trocas de linha
   trocasDeLinha <- 0
@@ -126,6 +148,28 @@ EliminacaoSemPivotamento <- function(matriz, vetor, dimensao){
 }
 
 EliminacaoComPivotamento <- function(matriz, vetor, dimensao){
+
+  # Fazendo validações da matriz
+  # Verificando se o objeto ´e uma matriz
+  if (!is.matrix(matriz)) {
+    stop("O argumento passado como 'matriz' não é um matriz. Por favor, entre com uma matriz",
+         call. = FALSE)
+  }
+  # Verificando se a matriz ´e quadrada
+  if (ncol(matriz) != nrow(matriz)) {
+    stop("A matriz passada deve ser quadrada (numero de linhas igual ao numero de colunas)", call. = FALSE)
+  }
+
+  # Fazendo validações do vetor
+  # Verificando se o objeto ´e uma matriz
+  if (!is.matrix(vetor)) {
+    stop("O argumento 'vetor' deve ser uma matriz, com dimensões nx1",
+         call. = FALSE)
+  }
+  # Verificando se a matriz ´e quadrada
+  if (ncol(vetor) != 1 || nrow(vetor) != ncol(matriz)) {
+    stop("O número de linhas do vetor não é igual ao número de colunas da matriz, ou o vetor não esta com dimensões nx1", call. = FALSE)
+  }
 
   # Define variáveis auxiliares
   # Define variável que vai contar o numero de trocas de linha
@@ -207,7 +251,7 @@ EliminacaoComPivotamento <- function(matriz, vetor, dimensao){
 
 #' @title Solver sem pivotamento
 #' @description
-#' Recebe uma matriz e um vetor 'b' e realiza a eliminação de Gauss sem pivotamento.
+#' Recebe uma matriz e um vetor e realiza a eliminação de Gauss sem pivotamento.
 #' @details
 #' A teoria utilizada, para a função 'Solver sem pivotamento', encontra-se no capítulo 6 do livro "Análise Numérica" (2022), dos autores Richard L. Burden, Douglas J. Faires e Annette M. Burden.
 #' O método, descrito no tópico \strong{"6.1 Sistemas de equações lineares"} (BURDEN; FAIRES; BURDEN, 2022, p. 396), consiste em zerar os coeficientes das linhas abaixo da linha selecionada, de forma a transformar a matriz inicial em uma matriz triangular superior, por meio de operações básicas entre linhas.
@@ -226,11 +270,16 @@ solver_semPivotamento <- function(matriz, vetor){
   tryCatch(
     {
       retorno <- EliminacaoSemPivotamento(matriz, vetor, dim(matriz)[1])
+      message("Solução calculada com sucesso")
     },
     error = function(cond) {
+      message("Ocorreu um erro")
+      message(conditionMessage(cond))
       return(list("matriz" = NULL, "x" = NULL, "determinante" = NULL, "msg_erro" = conditionMessage(cond)))
     },
     warning = function(cond) {
+      message("Ocorreu um warning")
+      message(conditionMessage(cond))
       return(list("matriz" = NULL, "x" = NULL, "determinante" = NULL, "msg_erro" = "warning - Houve um problema na execução"))
     }
   )
@@ -238,7 +287,7 @@ solver_semPivotamento <- function(matriz, vetor){
 
 #' @title Solver com pivotamento
 #' @description
-#' Recebe uma matriz e um vetor 'b' e realiza a eliminação de Gauss com pivotamento.
+#' Recebe uma matriz e um vetor e realiza a eliminação de Gauss com pivotamento.
 #' @details
 #' A teoria utilizada, para a função 'Solver com pivotamento', encontra-se no capítulo 6 do livro "Análise Numérica" (2022), dos autores Richard L. Burden, Douglas J. Faires e Annette M. Burden.
 #' O método, descrito no tópico \strong{"6.2 Estratégias de pivotamento"} (BURDEN; FAIRES; BURDEN, 2022, p. 412), consiste em zerar os coeficientes das linhas abaixo da linha selecionada, de forma a transformar a matriz inicial em uma matriz triangular superior, por meio de operações básicas entre linhas.
@@ -260,11 +309,16 @@ solver_comPivotamento <- function(matriz, vetor){
   tryCatch(
     {
       retorno <- EliminacaoSemPivotamento(matriz, vetor, dim(matriz)[1])
+      message("Solução calculada com sucesso")
     },
     error = function(cond) {
+      message("Ocorreu um erro")
+      message(conditionMessage(cond))
       return(list("matriz" = NULL, "x" = NULL, "determinante" = NULL, "msg_erro" = conditionMessage(cond)))
     },
     warning = function(cond) {
+      message("Ocorreu um warning")
+      message(conditionMessage(cond))
       return(list("matriz" = NULL, "x" = NULL, "determinante" = NULL, "msg_erro" = "warning - Houve um problema na execução"))
     }
   )

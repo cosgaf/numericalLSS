@@ -2,9 +2,17 @@
 #' @description
 #' Gera uma matriz de Hilbert, onde cada termo a_ij = 1 / (i + j - 1)
 #' @param dimensao dimensão da matriz a ser gerada (nxn)
-#' @return Retorna a matriz de Hilbert, de tamanhao nxn
+#' @return Retorna a matriz de Hilbert, de tamanhao nxn (quadrada)
 #' @export
 GeraMatrizHilbert <- function(dimensao){
+
+  if (!is.numeric(dimensao)) {
+    stop("O argumento ’dimensao’ deve ser número inteiro", call. = FALSE)
+  }
+  if (dimensao %% 1 != 0){
+    stop("O argumento ’dimensao’ deve ser número inteiro", call. = FALSE)
+  }
+
   # Inicializa matriz de zeros
   matrizHilbert <- matrix(0, nrow = dimensao, ncol = dimensao)
   # Posição inicial das linhas

@@ -20,7 +20,7 @@ Retorna uma lista com quatro (4) elementos:
 Em caso de não ser possível calcular a solução, todos os retornos estarão com valores NULL, com exceção do msg_erro, que conterá a mensagem explicando o motivo de não ser possível calcular.
 }
 \description{
-Recebe uma matriz e um vetor 'b' e realiza a eliminação de Gauss com pivotamento.
+Recebe uma matriz e um vetor e realiza a eliminação de Gauss com pivotamento.
 }
 \details{
 A teoria utilizada, para a função 'Solver com pivotamento', encontra-se no capítulo 6 do livro "Análise Numérica" (2022), dos autores Richard L. Burden, Douglas J. Faires e Annette M. Burden.

@@ -10,7 +10,7 @@ GeraMatrizHilbert(dimensao)
 \item{dimensao}{dimensão da matriz a ser gerada (nxn)}
 }
 \value{
-Retorna a matriz de Hilbert, de tamanhao nxn
+Retorna a matriz de Hilbert, de tamanhao nxn (quadrada)
 }
 \description{
 Gera uma matriz de Hilbert, onde cada termo a_ij = 1 / (i + j - 1)

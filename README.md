@@ -1,15 +1,20 @@
 
 # Implementação - modelos
 
+
 Diretório de implementação dos modelos proprietários da Farm.
 
+
 ## Visão Geral
+
 
 O fluxo de implementação é dado por:
 
 ![App Screenshot](./images/fluxo_do_processo.jpg)
 
+
 ## Base de entrada
+
 
 A base de entrada, selecionada via [query de extração](https://github.com/Farm-Investimentos/farm-ds-cspf/blob/4725f99b81437cc6d1a43f80aea4c07b61f8695c/query_extracao_base.sql), deve retornar os seguintes campos **obrigatórios**:
 
@@ -26,11 +31,11 @@ A base de entrada, selecionada via [query de extração](https://github.com/Farm
 
 A **base de entrada** é gerada pelo fluxo:
 
-![App Screenshot]()
-
+![App Screenshot](./images/fluxo_de_criacao_da_base_de_entrada.jpg)
 
 
 ## Função de entrada
+
 
 Arquivo com funções de entrada:
 
@@ -68,8 +73,11 @@ Ambas as funções podem ter configurações adicionais, importadas via **JSON**
 
 O fluxo da **função de entrada** é:
 
-![App Screenshot]()
+![App Screenshot](./images/fluxo_da_funcao_de_entrada.jpg)
+
+
 ## Base transformada
+
 
 A base transformada, aplicadas as funções de entrada, deve retornar os seguintes campos **obrigatórios**:
 
@@ -98,7 +106,9 @@ PF_PC_TPR01_IF_PF_faixas_categoria_1 | integer | Coluna dummy indicando se o PF_
 PF_PC_TPR01_IF_PF_faixas_categoria_2 | integer | Coluna dummy indicando se o PF_PC_TPR01_IF_PF esta no intervalo (53.70, 80.05] |
 PF_PC_TPR01_IF_PF_faixas_categoria_3 | integer | Coluna dummy indicando se o PF_PC_TPR01_IF_PF esta no intervalo (80.05, 100], ou se for 304 |
 
+
 ## Aplicação do modelo
+
 
 Arquivo com a aplicação do modelo
 
@@ -119,9 +129,11 @@ O modelo é aplicado através de um **pickle**, que se encontra na pasta [models
 
 O fluxo de **aplicação do modelo** é dado por:
 
-![App Screenshot]()
+![App Screenshot](./images/fluxo_de_aplicacao_do_modelo.jpg)
+
 
 ## Função de saída
+
 
 Arquivo com funções de saída:
 
@@ -157,8 +169,11 @@ A função pode ter configurações adicionais, importada via **JSON** em arquiv
 
 O fluxo da **função de saída** é:
 
-![App Screenshot]()
+![App Screenshot](./images/fluxo_da_funcao_de_saida.jpg)
+
+
 ## Base de saída
+
 
 A base de saída deve retornar os seguintes campos **obrigatórios**:
 
